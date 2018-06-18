@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -17,10 +18,14 @@ public class Storico extends Base {
 	@ManyToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
 	@JsonIgnore
 	private User user;
-	@Column (name = "lista_prodotti", unique = false, nullable = true)
+	
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, mappedBy = "storico")
+	@JsonIgnore
 	private List<Prodotto> listaProdotti;
+	
 	@Column (name = "totale", unique = false, nullable = false)
 	private Double totale;
+	
 	@Column (name = "data", unique = false, nullable = false)
 	private LocalDate data;
 	
