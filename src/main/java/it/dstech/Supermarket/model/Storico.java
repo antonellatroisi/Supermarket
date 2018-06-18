@@ -23,6 +23,8 @@ public class Storico extends Base {
 	private Double totale;
 	@Column (name = "data", unique = false, nullable = false)
 	private LocalDate data;
+	
+	
 	public User getUser() {
 		return user;
 	}
@@ -41,4 +43,12 @@ public class Storico extends Base {
 	public void setData(LocalDate data) {
 		this.data = data;
 	}
+	public List<Prodotto> getListaProdotti() {
+		return listaProdotti;
+	}
+	public void setListaProdotti(List<Prodotto> listaProdotti) {
+		this.listaProdotti = listaProdotti;
+	}
+	
+	
 }
