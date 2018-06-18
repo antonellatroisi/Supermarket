@@ -42,4 +42,5 @@ public class UserCtrl {
 	public User update(@RequestBody User user) {
 	return userService.update(user);
 	}
+	
 }
