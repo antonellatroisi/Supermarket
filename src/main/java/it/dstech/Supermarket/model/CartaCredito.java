@@ -16,8 +16,8 @@ public class CartaCredito extends Base {
 	private String numero;
 	@Column (name = "scadenza", unique = false, nullable = false)
 	private LocalDate scadenza;
-	@Column (name = "ccv", unique = true, nullable = false)
-	private String ccv;
+	@Column (name = "cvv", unique = true, nullable = false)
+	private String cvv;
 	@Column (name = "credito", unique = false, nullable = false)
 	private Double credito;
 
@@ -41,12 +41,12 @@ public class CartaCredito extends Base {
 		this.scadenza = scadenza;
 	}
 
-	public String getCcv() {
-		return ccv;
+	public String getCvv() {
+		return cvv;
 	}
 
-	public void setCcv(String ccv) {
-		this.ccv = ccv;
+	public void setCcv(String cvv) {
+		this.cvv = cvv;
 	}
 
 	public Double getCredito() {
