@@ -1,6 +1,7 @@
 package it.dstech.Supermarket.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -16,7 +17,8 @@ public class Storico extends Base {
 	@ManyToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
 	@JsonIgnore
 	private User user;
-
+	@Column (name = "lista_prodotti", unique = false, nullable = true)
+	private List<Prodotto> listaProdotti;
 	@Column (name = "totale", unique = false, nullable = false)
 	private Double totale;
 	@Column (name = "data", unique = false, nullable = false)
