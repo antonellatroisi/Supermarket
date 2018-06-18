@@ -6,7 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 
 @Entity(name = "prodotto")
-public class Prodotto extends Base{
+public class Prodotto extends Base {
 
 	@Column(name = "nome", unique = false, nullable = false)
 	private String nome;
