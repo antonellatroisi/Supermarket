@@ -1,5 +1,9 @@
 package it.dstech.Supermarket.repository;
 
-public interface IUserRepository {
+import org.springframework.data.repository.CrudRepository;
+
+import it.dstech.Supermarket.model.User;
+
+public interface IUserRepository extends CrudRepository<User, Integer> {
 
 }
