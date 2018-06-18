@@ -42,7 +42,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.httpBasic().and().authorizeRequests().antMatchers("/user/**/", "/user/login", "/user/register").permitAll()
 		.antMatchers("/prodotto/**") .hasAnyRole ("DBA")
 		.antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-		.anyRequest().authenticated().and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+		.anyRequest().authenticated().and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/user/logout"))
 		.permitAll().and().csrf().disable();
 	}
 

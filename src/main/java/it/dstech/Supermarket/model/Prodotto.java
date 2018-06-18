@@ -2,8 +2,14 @@ package it.dstech.Supermarket.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity(name = "prodotto")
 public class Prodotto extends Base {
@@ -35,11 +41,24 @@ public class Prodotto extends Base {
 	@Column(name = "offerta", unique = false, nullable = false)
 	private int offerta;
 	
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+	@JsonIgnore
+	private Storico storico;
 	
 	//getters and setters
+	
+	
 
 	public String getNome() {
 		return nome;
+	}
+
+	public Storico getStorico() {
+		return storico;
+	}
+
+	public void setStorico(Storico storico) {
+		this.storico = storico;
 	}
 
 	public void setNome(String nome) {
