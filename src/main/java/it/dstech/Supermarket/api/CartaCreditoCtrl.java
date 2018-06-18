@@ -20,8 +20,8 @@ public class CartaCreditoCtrl {
 	@Autowired
 	private CartaCreditoService cartaCreditoService;
 	
-	@GetMapping
-	public CartaCredito findOne (@RequestParam ("id") int id) {
+	@GetMapping("{id}")
+	public CartaCredito findOne (int id) {
 		return cartaCreditoService.findOne(id);
 	}
 	@GetMapping
