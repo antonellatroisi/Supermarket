@@ -45,7 +45,7 @@ public class CartaCredito extends Base {
 		return cvv;
 	}
 
-	public void setCcv(String cvv) {
+	public void setCvv(String cvv) {
 		this.cvv = cvv;
 	}
 

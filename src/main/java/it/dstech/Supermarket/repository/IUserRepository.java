@@ -6,4 +6,6 @@ import it.dstech.Supermarket.model.User;
 
 public interface IUserRepository extends CrudRepository<User, Integer> {
 
+	User findByUsername(String username);
+
 }
