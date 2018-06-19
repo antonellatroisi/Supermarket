@@ -26,12 +26,12 @@ public class ProdottoCtrl {
 	@Autowired
 	private ProdottoService service;
 	
-	@PostMapping("createList")
+	@PostMapping("/createList")
 	public Iterable<Prodotto> salvaProdotto (@RequestBody ArrayList<Prodotto> listaProdotti){
 		return service.salvaProdotto(listaProdotti);
 	}
 	
-	@GetMapping("{id}")
+	@GetMapping("/{id}")
 	public Prodotto getById(@PathVariable int id) throws Exception {
 		return service.getById(id);
 	}
