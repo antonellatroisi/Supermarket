@@ -31,6 +31,7 @@ public class ProdottoService {
 
 	@Autowired
 	private UserService serviceUser;
+	
 	@Autowired
 	private StoricoService storicoService;
 
@@ -75,6 +76,8 @@ public class ProdottoService {
 	}
 
 	public Storico acquista (List<Prodotto> listaProdotti, Integer idCartaCredito) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		User user = daoUser.findByUsername(auth.getName());
 		for(Prodotto p : listaProdotti) {
 			if(p.getQuantitaDisponibile() < 1) {
 				return null;

@@ -45,15 +45,15 @@ public class UserCtrl {
 	public User update(@RequestBody User user) {
 		return userService.update(user);
 	}
-	@GetMapping
+	@GetMapping ("/findOne")
 	public User findOne(Integer id) {
 		return userService.findOne(id);
 	}
-	@GetMapping
+	@GetMapping ("/findAll")
 	public Iterable<User> findAll(){
 		return userService.findAll();
 	}
-	@GetMapping
+	@GetMapping ("/findByUsername")
 	public User findByUsername(String username) {
 		return userService.findByUsername(username);
 	}

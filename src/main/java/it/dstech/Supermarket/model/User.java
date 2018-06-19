@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.OneToMany;
 
 @Entity (name = "user")
@@ -14,6 +16,7 @@ public class User extends Base {
 	@Column (name = "password", nullable = false, unique = true)
 	private String password;
 	
+	@Enumerated (EnumType.STRING)
 	private UserProfile userProfileType;
 	
 	@Column (name = "telefono", nullable = false, unique = false)

@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,32 +26,32 @@ public class ProdottoCtrl {
 	@Autowired
 	private ProdottoService service;
 	
-	@PostMapping("/prodotto")
+	@PostMapping("createList")
 	public Iterable<Prodotto> salvaProdotto (@RequestBody ArrayList<Prodotto> listaProdotti){
 		return service.salvaProdotto(listaProdotti);
 	}
 	
-	@GetMapping("/prodotto/{id}")
-	public Prodotto getById(int id) {
+	@GetMapping("{id}")
+	public Prodotto getById(@PathVariable int id) {
 		return service.getById(id);
 	}
 
-	@GetMapping("/prodotto")
+	@GetMapping("/findAll")
 	public Iterable<Prodotto> findAll(){
 		return service.findAll();
 	}
 	
-	@GetMapping("/prodotto/disponibili")
+	@GetMapping("/prodottiDisponibili")
 	public Iterable<Prodotto> prodottiDisponibili(){
 		return service.prodottiDisponibili();
 	}
 	
-	@GetMapping("/prodotto/categoria")
+	@GetMapping("/findByCategoria")
 	public Iterable<Prodotto> prodottiPerCategoria (@RequestHeader ("categoria") Categoria categoria){
 		return service.prodottiPerCategoria(categoria);
 	}
-	@GetMapping
-	public Storico acquista (@RequestParam ("listaProdotti") List<Prodotto> listaProdotti, @RequestParam ("idCartaCredito") Integer idCartaCredito) {
+	@GetMapping("/acquisto")
+	public Storico acquista (@RequestBody List<Prodotto> listaProdotti, @RequestParam ("idCartaCredito") Integer idCartaCredito) {
 		return service.acquista(listaProdotti, idCartaCredito);
 	}
 	
