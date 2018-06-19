@@ -33,7 +33,7 @@ public class ProdottoService {
 	private UserService serviceUser;
 	@Autowired
 	private StoricoService storicoService;
-	
+
 	public Iterable<Prodotto> salvaProdotto (ArrayList<Prodotto> listaProdotti){
 		return dao.save(listaProdotti);
 	}
@@ -146,11 +146,9 @@ public class ProdottoService {
 		}
 		storico.setTotale(contoTotale);
 		storico.setData(LocalDate.now());
-
 		for(Prodotto p : listaProdotti) {
 			update(p);
 		}
-
 		return storicoService.create(storico);
 
 	}
