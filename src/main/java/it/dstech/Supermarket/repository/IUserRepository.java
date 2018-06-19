@@ -9,5 +9,4 @@ public interface IUserRepository extends CrudRepository<User, Integer> {
 	User findByUsername(String username);
 	
 	User findByListaCarteCredito (String numeroCarta);
-
 }

@@ -56,23 +56,7 @@ public class ProdottoService {
 		List<Prodotto> listaProdotti = dao.findByCategoria(categoria);
 		return listaProdotti;
 	}
-	public void acquistaProdotto (String numeroCarta, String cvv, int idProdotto) {
-	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-	User utente = daoUser.findByUsername(auth.getName());
-	Prodotto prodottoTrovato = dao.findOne(idProdotto);
-	daoUser.findByListaCarteCredito(numeroCarta);
-	//if (prodottoTrovato.getId() != null) {
-		//if (prodottoTrovato.getQuantitaDisponibile() > 0 ) {
-			//for (int i= 0; i < utente.getListaCarteCredito().size(); i++) {
-				//if (utente.getListaCarteCredito().get(i).getNumero() == numeroCarta) {
-					//if (utente.getListaCarteCredito().get(i).getCvv() == cvv) {
-						//if (cartaService.findByNumero(numeroCarta).getCredito() >= prodottoTrovato.getPrezzoUnitario()) {
-							//cartaService.findByNumero(numeroCarta).setCredito(cartaService.findByNumero(numeroCarta).getCredito() - prodottoTrovato.getPrezzoUnitario());
-							// dao.findByListaProdotto(idProdotto).getListaProdotto().add(prodottoTrovato);
-			
-	}
-	//dao.save(utente);
-	
+
 	public void acquistoProdotti(String numeroCarta, String cvv, ArrayList<Integer> idProdotti ) throws Exception{
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		User user = serviceUser.findByUsername(auth.getName());
@@ -84,7 +68,7 @@ public class ProdottoService {
 						if(user.getListaCarteCredito().get(i).getCredito()>= prodotto.getPrezzoUnitario()) {
 							prodotto.setQuantitaDisponibile(prodotto.getQuantitaDisponibile()-1);
 							user.getListaCarteCredito().get(i).setCredito(user.getListaCarteCredito().get(i).getCredito() - (prodotto.getPrezzoUnitario()));
-							//ragazzi, manca aggiungere questa transazione allo storico...
+							
 							
 							serviceUser.save(user);
 						}else {
