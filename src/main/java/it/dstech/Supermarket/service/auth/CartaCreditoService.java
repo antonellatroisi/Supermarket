@@ -3,6 +3,7 @@ package it.dstech.Supermarket.service.auth;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 import it.dstech.Supermarket.model.CartaCredito;
 import it.dstech.Supermarket.repository.ICartaCreditoRepository;
 
@@ -11,7 +12,7 @@ public class CartaCreditoService {
 
 	@Autowired
 	private ICartaCreditoRepository dao;
-	
+
 	public CartaCredito findOne (int id) {
 		return dao.findOne(id);
 	}
@@ -31,5 +32,8 @@ public class CartaCreditoService {
 	}
 	public void deleteOne (int id) {
 		dao.delete(id);
+	}
+	public CartaCredito findByNumero(String numeroCarta) {
+		return dao.findByNumero(numeroCarta);
 	}
 }

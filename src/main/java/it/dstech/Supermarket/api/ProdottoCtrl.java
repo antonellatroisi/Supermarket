@@ -46,4 +46,5 @@ public class ProdottoCtrl {
 	public Iterable<Prodotto> prodottiPerCategoria (@RequestHeader ("categoria") String categoria){
 		return service.prodottiPerCategoria(categoria);
 	}
+	
 }
