@@ -55,7 +55,6 @@ public class ProdottoService {
 		List<Prodotto> listaProdotti = dao.findByCategoria(categoria);
 		return listaProdotti;
 	}
-	
 	public void acquistaProdotto (String numeroCarta, String cvv, int idProdotto) {
 	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 	User utente = daoUser.findByUsername(auth.getName());
