@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import it.dstech.Supermarket.model.Categoria;
 import it.dstech.Supermarket.model.Prodotto;
+import it.dstech.Supermarket.model.Storico;
 import it.dstech.Supermarket.service.auth.ProdottoService;
 
 @RestController
@@ -46,6 +48,10 @@ public class ProdottoCtrl {
 	@GetMapping("/prodotto/categoria")
 	public Iterable<Prodotto> prodottiPerCategoria (@RequestHeader ("categoria") Categoria categoria){
 		return service.prodottiPerCategoria(categoria);
+	}
+	@GetMapping
+	public Storico acquista (@RequestParam ("listaProdotti") List<Prodotto> listaProdotti, @RequestParam ("idCartaCredito") Integer idCartaCredito) {
+		return service.acquista(listaProdotti, idCartaCredito);
 	}
 	
 }
