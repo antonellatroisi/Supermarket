@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import it.dstech.Supermarket.model.Categoria;
 import it.dstech.Supermarket.model.Prodotto;
 import it.dstech.Supermarket.repository.IProdottoRepository;
 
@@ -41,9 +42,8 @@ public class ProdottoService {
 		return listaProdDisponibili;
 	}
 	
-	public Iterable<Prodotto> prodottiPerCategoria (String categoria){
+	public Iterable<Prodotto> prodottiPerCategoria (Categoria categoria){
 		List<Prodotto> listaProdotti = dao.findByCategoria(categoria);
 		return listaProdotti;
 	}
-	// antoo non prendere iniziativeeeee
 }

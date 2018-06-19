@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import it.dstech.Supermarket.model.Categoria;
 import it.dstech.Supermarket.model.Prodotto;
 import it.dstech.Supermarket.service.auth.ProdottoService;
 
@@ -43,7 +44,7 @@ public class ProdottoCtrl {
 	}
 	
 	@GetMapping("/prodotto/categoria")
-	public Iterable<Prodotto> prodottiPerCategoria (@RequestHeader ("categoria") String categoria){
+	public Iterable<Prodotto> prodottiPerCategoria (@RequestHeader ("categoria") Categoria categoria){
 		return service.prodottiPerCategoria(categoria);
 	}
 }
