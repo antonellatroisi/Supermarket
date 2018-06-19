@@ -36,10 +36,10 @@ public class ProdottoService {
 	private StoricoService storicoService;
 
 	public Iterable<Prodotto> salvaProdotto (ArrayList<Prodotto> listaProdotti){
-		return dao.save(listaProdotti);
+		return dao.saveAll(listaProdotti);
 	}
-	public Prodotto  getById(int id) {
-		return dao.findOne(id);
+	public Prodotto  getById(int id) throws Exception {
+		return dao.findById(id).orElseThrow(()-> new Exception());
 	}
 
 	public Iterable<Prodotto> findAll(){
@@ -61,7 +61,7 @@ public class ProdottoService {
 		List<Prodotto> listaProdotti = dao.findByCategoria(categoria);
 		return listaProdotti;
 	}
-	public Prodotto update (Prodotto prodottoInInput) {
+	public Prodotto update (Prodotto prodottoInInput) throws Exception {
 		Prodotto prodottoDb = getById(prodottoInInput.getId());
 		prodottoDb.setNome(prodottoInInput.getNome());
 		prodottoDb.setMarca(prodottoInInput.getMarca());
@@ -75,7 +75,7 @@ public class ProdottoService {
 		return dao.save(prodottoDb);
 	}
 
-	public Storico acquista (List<Prodotto> listaProdotti, Integer idCartaCredito) {
+	public Storico acquista (List<Prodotto> listaProdotti, Integer idCartaCredito) throws Exception {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		User user = daoUser.findByUsername(auth.getName());
 		for(Prodotto p : listaProdotti) {

@@ -32,7 +32,7 @@ public class ProdottoCtrl {
 	}
 	
 	@GetMapping("{id}")
-	public Prodotto getById(@PathVariable int id) {
+	public Prodotto getById(@PathVariable int id) throws Exception {
 		return service.getById(id);
 	}
 
@@ -51,7 +51,7 @@ public class ProdottoCtrl {
 		return service.prodottiPerCategoria(categoria);
 	}
 	@GetMapping("/acquisto")
-	public Storico acquista (@RequestBody List<Prodotto> listaProdotti, @RequestParam ("idCartaCredito") Integer idCartaCredito) {
+	public Storico acquista (@RequestBody List<Prodotto> listaProdotti, @RequestParam ("idCartaCredito") Integer idCartaCredito) throws Exception {
 		return service.acquista(listaProdotti, idCartaCredito);
 	}
 	

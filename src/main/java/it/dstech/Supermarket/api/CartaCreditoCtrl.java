@@ -21,7 +21,7 @@ public class CartaCreditoCtrl {
 	private CartaCreditoService cartaCreditoService;
 	
 	@GetMapping("{id}")
-	public CartaCredito findOne (int id) {
+	public CartaCredito findOne (int id) throws Exception {
 		return cartaCreditoService.findOne(id);
 	}
 	@GetMapping
@@ -33,7 +33,7 @@ public class CartaCreditoCtrl {
 		return cartaCreditoService.create(cartaCredito);
 	}
 	@PutMapping
-	public CartaCredito update (@RequestBody CartaCredito cartaCreditoInput) {
+	public CartaCredito update (@RequestBody CartaCredito cartaCreditoInput) throws Exception {
 		return cartaCreditoService.update(cartaCreditoInput);
 	}
 	@DeleteMapping

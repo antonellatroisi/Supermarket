@@ -13,8 +13,8 @@ public class CartaCreditoService {
 	@Autowired
 	private ICartaCreditoRepository dao;
 
-	public CartaCredito findOne (Integer idCartaCredito) {
-		return dao.findOne(idCartaCredito);
+	public CartaCredito findOne (Integer idCartaCredito) throws Exception {
+		return dao.findById(idCartaCredito).orElseThrow(()-> new Exception());
 	}
 	public Iterable <CartaCredito> findAll() {
 		return dao.findAll();
@@ -22,7 +22,7 @@ public class CartaCreditoService {
 	public CartaCredito create (CartaCredito cartaCredito) {
 		return dao.save(cartaCredito);
 	}
-	public CartaCredito update (CartaCredito cartaCreditoInput) {
+	public CartaCredito update (CartaCredito cartaCreditoInput) throws Exception {
 		CartaCredito cartaCreditoDb = findOne(cartaCreditoInput.getId());
 		cartaCreditoDb.setCvv(cartaCreditoInput.getCvv());
 		cartaCreditoDb.setCredito(cartaCreditoInput.getCredito());
@@ -30,8 +30,8 @@ public class CartaCreditoService {
 		cartaCreditoDb.setScadenza(cartaCreditoInput.getScadenza());
 		return dao.save(cartaCreditoDb);
 	}
-	public void deleteOne (int id) {
-		dao.delete(id);
+	public void deleteOne (Integer id) {
+		dao.deleteById(id);
 	}
 	public CartaCredito findByNumero(String numeroCarta) {
 		return dao.findByNumero(numeroCarta);

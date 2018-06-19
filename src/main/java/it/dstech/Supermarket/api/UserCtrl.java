@@ -42,11 +42,11 @@ public class UserCtrl {
 		return userService.create(user);
 	}
 	@PutMapping("/update")
-	public User update(@RequestBody User user) {
+	public User update(@RequestBody User user) throws Exception {
 		return userService.update(user);
 	}
 	@GetMapping ("/findOne")
-	public User findOne(Integer id) {
+	public User findOne(Integer id) throws Exception {
 		return userService.findOne(id);
 	}
 	@GetMapping ("/findAll")

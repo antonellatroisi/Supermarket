@@ -15,16 +15,16 @@ public class UserService {
 		return dao.save(user);
 	}
 
-	public User findOne(Integer id) {
-		return dao.findOne(id);
+	public User findOne(Integer id) throws Exception {
+		return dao.findById(id).orElseThrow(() -> new Exception());
 	}
 
 	public Iterable<User> findAll(){
 		return dao.findAll();
 	}
 
-	public User update(User user) {
-		User userDb=dao.findOne(user.getId());
+	public User update(User user) throws Exception {
+		User userDb=findOne(user.getId());
 		userDb.setPassword(user.getPassword());
 		userDb.setUsername(user.getUsername());
 		userDb.setTelefono(user.getTelefono());
@@ -41,8 +41,6 @@ public class UserService {
 	}
 
 	public void delete(Integer id) {
-		dao.delete(id);
-
+		dao.deleteById(id);
 	}
-
 }
