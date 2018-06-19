@@ -10,19 +10,19 @@ import it.dstech.Supermarket.repository.IUserRepository;
 public class UserService {
 	@Autowired
 	IUserRepository dao;
-	
+
 	public User create(User user) {
 		return dao.save(user);
 	}
-	
+
 	public User findOne(Integer id) {
 		return dao.findOne(id);
 	}
-	
+
 	public Iterable<User> findAll(){
 		return dao.findAll();
 	}
-	
+
 	public User update(User user) {
 		User userDb=dao.findOne(user.getId());
 		userDb.setPassword(user.getPassword());
@@ -35,17 +35,14 @@ public class UserService {
 		userDb.setUserProfileType(user.getUserProfileType());
 		return dao.save(userDb);
 	}
-	
+
 	public User findByUsername(String username) {
 		return dao.findByUsername(username);
 	}
-	
+
 	public void delete(Integer id) {
 		dao.delete(id);
+
 	}
-	
-	public User save(User o){
-		return dao.save(o);
-	}
-	
+
 }
