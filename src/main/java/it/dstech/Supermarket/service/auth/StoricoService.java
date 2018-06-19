@@ -18,4 +18,9 @@ public class StoricoService {
 	public List<Storico> findByUser_id(Integer id) {
 		return dao.findByUser_id(id);
 	}
+
+
+	public Storico create(Storico storico) {
+		return dao.save(storico);
+	}
 }

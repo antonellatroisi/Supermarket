@@ -13,8 +13,8 @@ public class CartaCreditoService {
 	@Autowired
 	private ICartaCreditoRepository dao;
 
-	public CartaCredito findOne (int id) {
-		return dao.findOne(id);
+	public CartaCredito findOne (Integer idCartaCredito) {
+		return dao.findOne(idCartaCredito);
 	}
 	public Iterable <CartaCredito> findAll() {
 		return dao.findAll();
