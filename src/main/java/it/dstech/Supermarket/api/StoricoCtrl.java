@@ -20,11 +20,7 @@ public class StoricoCtrl {
 	@Autowired
 	private StoricoService serviceStorico;
 	
-	@PostMapping
-	public Storico create (@RequestBody Storico storico) {
-		return serviceStorico.create(storico);
-	}
-	@GetMapping
+	@GetMapping ("/{id}")
 	public List<Storico> findByUser (@RequestParam ("id") Integer id) {
 		return serviceStorico.findByUser_id(id);
 	}

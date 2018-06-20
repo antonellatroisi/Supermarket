@@ -3,11 +3,11 @@ package it.dstech.Supermarket.api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import it.dstech.Supermarket.model.CartaCredito;
@@ -20,24 +20,24 @@ public class CartaCreditoCtrl {
 	@Autowired
 	private CartaCreditoService cartaCreditoService;
 	
-	@GetMapping("{id}")
-	public CartaCredito findOne (int id) throws Exception {
+	@GetMapping("/{id}")
+	public CartaCredito findOne (@PathVariable int id) throws Exception {
 		return cartaCreditoService.findOne(id);
 	}
-	@GetMapping
+	@GetMapping("/findAll")
 	public Iterable <CartaCredito> findAll() {
 		return cartaCreditoService.findAll();
 }
-	@PostMapping
+	@PostMapping("/create")
 	public CartaCredito create (@RequestBody CartaCredito cartaCredito) {
 		return cartaCreditoService.create(cartaCredito);
 	}
-	@PutMapping
+	@PutMapping("/update")
 	public CartaCredito update (@RequestBody CartaCredito cartaCreditoInput) throws Exception {
 		return cartaCreditoService.update(cartaCreditoInput);
 	}
-	@DeleteMapping
-	public void deleteOne (int id) {
+	@DeleteMapping("/delete/{id}")
+	public void deleteOne (@PathVariable int id) {
 		cartaCreditoService.deleteOne(id);
 	}
 }
