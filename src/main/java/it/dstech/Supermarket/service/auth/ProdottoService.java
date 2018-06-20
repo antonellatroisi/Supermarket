@@ -28,9 +28,6 @@ public class ProdottoService {
 
 	@Autowired
 	private IUserRepository daoUser;
-
-	@Autowired
-	private UserService serviceUser;
 	
 	@Autowired
 	private StoricoService storicoService;
