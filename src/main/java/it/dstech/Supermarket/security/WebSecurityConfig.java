@@ -44,7 +44,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers(HttpMethod.POST, "/cartaCredito").hasAnyRole("USER", "ADMIN")
 		.antMatchers(HttpMethod.PUT, "/cartaCredito", "/user/update").hasAnyRole("ADMIN")
 		.antMatchers(HttpMethod.POST, "/prodotto").hasAnyRole("ADMIN")
-		.antMatchers("/prodotto/**").hasAnyRole ("DBA")
 		.antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
 		.anyRequest().authenticated().and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/user/logout"))
 		.permitAll().and().csrf().disable();
