@@ -39,11 +39,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.httpBasic().and().authorizeRequests().antMatchers("/user/**/", "/user/login", "/user/register").permitAll()
-		.antMatchers(HttpMethod.GET, "/cartaCredito/{id}", "/storico{id}", "/prodotto/prodottiDisponibili", "/prodotto/findByCategoria").hasAnyRole("USER", "ADMIN")
-		.antMatchers(HttpMethod.POST, "/cartaCredito").hasAnyRole("USER", "ADMIN")
-		.antMatchers(HttpMethod.PUT, "/cartaCredito", "/user/update").hasAnyRole("ADMIN")
-		.antMatchers(HttpMethod.POST, "/prodotto").hasAnyRole("ADMIN")
+		http.httpBasic().and().authorizeRequests().antMatchers("/user/login", "/user/register", "user/delete").permitAll()
+		.antMatchers(HttpMethod.GET, "user/findOne", "user/findAll", "/user/findByUsername", "/cartaCredito/findAll").hasAnyRole("ADMIN", "DBA")
+		.antMatchers(HttpMethod.GET, "/cartaCredito/{id}", "/storico/{id}", "/prodotto/prodottiDisponibili", "/prodotto/findByCategoria", "/prodotto/findAll", "prodotto/{id}", "/prodotto/acquisto").hasAnyRole("USER", "ADMIN", "DBA")
+		.antMatchers(HttpMethod.POST, "/cartaCredito/create").hasAnyRole("USER", "ADMIN", "DBA")
+		.antMatchers(HttpMethod.PUT, "/cartaCredito/update").hasAnyRole("USER", "ADMIN", "DBA")
+		.antMatchers(HttpMethod.PUT, "/user/update").hasRole("ADMIN")
+		.antMatchers(HttpMethod.POST, "/prodotto/createList").hasAnyRole("ADMIN", "DBA")
+		.antMatchers(HttpMethod.DELETE, "/cartaCredito/delete/{id}").hasAnyRole("USER", "ADMIN", "DBA")
 		.antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
 		.anyRequest().authenticated().and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/user/logout"))
 		.permitAll().and().csrf().disable();
